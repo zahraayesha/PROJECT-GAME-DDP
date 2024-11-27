@@ -1,0 +1,27 @@
+#include <ncurses/ncurses.h>
+#include <string>
+
+int main() {
+    initscr();
+    noecho();
+    cbreak();
+    curs_set(1);
+
+    char nama[50];
+
+    clear();
+    mvprintw(5, 10, "Masukkan Nama Anda: ");
+    echo(); 
+    mvgetnstr(5, 30, nama, 49);
+    noecho();
+    curs_set(0);
+
+    clear();
+    mvprintw(7, 10, "Halo, %s! Selamat datang di ...!", nama);
+    mvprintw(9, 10, "(Tekan tombol apapun untuk melanjutkan.)");
+    refresh();
+    getch();
+
+    endwin();
+    return 0;
+}
